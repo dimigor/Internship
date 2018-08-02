@@ -1,5 +1,6 @@
 package main;
 
+import institution.University;
 import person.Student;
 import person.consciousness.Knowledge;
 
@@ -15,12 +16,10 @@ public class Sqlite {
         try {
             conn = DriverManager.getConnection(url);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+
         }
         return conn;
     }
-
-
 
 
     Dictionary select () {
@@ -30,25 +29,32 @@ public class Sqlite {
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(query)){
+             ResultSet rs    = stmt.executeQuery(query))
+        {
 
             // loop through the result set
-            while (rs.next()) {
+            while (rs.next())
+            {
 
-                        dict.put(rs.getString("Name"), rs.getInt("KnowledgeLevel"));
+                dict.put(rs.getString("Name"), rs.getInt("KnowledgeLevel"));
+
             }
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        }
+
+        catch (Exception e)
+        {
+
         }
 
         return dict ;
     }
 
-    public void getStudentFromDatabase(){
+    public static boolean getStudentFromDatabase(University university){
 
         Dictionary dict = new Hashtable();
         Sqlite sqlite = new Sqlite();
+
         //Get all data from database in Dictionary
         dict = sqlite.select();
 
@@ -65,13 +71,14 @@ public class Sqlite {
                 level = (int) dict.get(obj);
 
                 university.addStudent(new Student(name, new Knowledge(level)));
-
             }
-        }else
 
-        {
+            return true;
+        } else {
 
+            return false;
         }
+
     }
 
 }
