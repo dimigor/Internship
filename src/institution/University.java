@@ -7,10 +7,11 @@ import java.util.List;
 
 public class University {
 
+    private String name;
     private List<Student> studentList = new ArrayList<>();
 
     public University(String name) {
-        //TODO: Implementation is needed
+        this.name = name;
     }
 
     public void setStudent(Student student) {
