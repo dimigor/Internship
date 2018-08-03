@@ -14,16 +14,7 @@ public class Application {
 
         University university = new University("CH.U.I.");
 
-        //if database does not exist, we add default students
-        if (Sqlite.getStudentFromDatabase(university) == false){
-
-            university.addStudent(new Student("Andrew Kostenko", new Knowledge(2)));
-            university.addStudent(new Student("Julia Veselkina", new Knowledge(4)));
-            university.addStudent(new Student("Maria Perechrest", new Knowledge(3)));
-            university.addStudent(new Student("Olga Voron", new Knowledge(2)));
-            university.addStudent(new Student("Ostap Ivanov", new Knowledge(3)));
-
-        }
+        university.setStudent();
 
         Internship internship = new Internship("Interlink");
         internship.setStudent(university);

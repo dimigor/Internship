@@ -1,6 +1,8 @@
 package institution;
 
 import person.Student;
+import main.Sqlite;
+import person.consciousness.Knowledge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,19 @@ public class University {
         this.name = name;
     }
 
-    public void setStudent(Student student)
+    public void setStudent()
     {
-        studentList.add(student);
+        //if database does not exist, we add default students
+        if (Sqlite.getStudentFromDatabase(this) == false){
+
+            this.addStudent(new Student("Andrew Kostenko", new Knowledge(2)));
+            this.addStudent(new Student("Julia Veselkina", new Knowledge(4)));
+            this.addStudent(new Student("Maria Perechrest", new Knowledge(3)));
+            this.addStudent(new Student("Olga Voron", new Knowledge(2)));
+            this.addStudent(new Student("Ostap Ivanov", new Knowledge(3)));
+
+        }
+
     }
 
     public void addStudent(Student student)

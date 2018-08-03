@@ -11,7 +11,7 @@ public class Sqlite {
 
     private Connection connect() {
         // SQLite connection
-        String url = "jdbc:sqlite:Intership.db";
+        String url = "jdbc:sqlite:Intership1.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
