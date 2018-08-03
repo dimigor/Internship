@@ -41,4 +41,21 @@ public class University {
     {
         return studentList;
     }
+
+    public int averageLevelOfKnowledge() {
+
+        //Calculating the amount of students knowledge level
+        int sum = 0;
+        for (Student std : this.getStudentList())
+        {
+            sum += std.getKnowledge().getLevel();
+        }
+
+        //Calculating of the average
+        int avg = sum / this.getStudentList().size();
+
+        return avg;
+    }
+
+
 }
