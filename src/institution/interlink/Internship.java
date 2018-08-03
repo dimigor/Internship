@@ -19,14 +19,18 @@ public class Internship {
 
     public void setStudent(University university) {
 
+        if (!university.getStudentList().isEmpty()) {
 
-        //if the student knowledge level is above average then add it to internship
-        for (Student std : university.getStudentList())
-        {
-            if (std.getKnowledge().getLevel() > university.averageLevelOfKnowledge())
-            {
-                studentList.add(std);
+            //if the student knowledge level is above average then add it to internship
+            for (Student std : university.getStudentList()) {
+                if (std.getKnowledge().getLevel() > university.averageLevelOfKnowledge()) {
+                    studentList.add(std);
+                }
             }
+
+        } else {
+            System.out.println("Set student!");
+            System.exit(0);
         }
 
     }
